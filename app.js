@@ -32,7 +32,7 @@ let salaryOutput = document.getElementById("salaryOutput");
 let nameInput = document.getElementById("nameId");
 let 
 
-let ref = firebase.database().ref(firebase.auth().uid);
+var ref = firebase.database().ref(firebase.auth().uid);
 ref.on("value", snap => {
   data = snap.val();
   balance = data.balance;
