@@ -1,8 +1,36 @@
+let config = {
+  apiKey: "AIzaSyCAlMrDCczQWmFYgZn0b6JIDSIwCUOANZc",
+  authDomain: "pfm-simulation.firebaseapp.com",
+  databaseURL: "https://pfm-simulation.firebaseio.com",
+  projectId: "pfm-simulation",
+  storageBucket: "pfm-simulation.appspot.com",
+  messagingSenderId: "562600285763"
+};
+firebase.initializeApp(config);
 let ref = firebase.database().ref();
 ref.on("value", snap => {
    let temp = "";
+    var arr = [];
+    var arr2= [];
    for(prop in snap.val()){
-       temp += '<tr><td>'+snap.val()[prop][name]+' dollars from your salary</td></tr>';
+       arr.push(snap.val()[prop]["name"]);
+       arr2.push(snap.val()[prop]["leaderbalance"]);
+       
    }
+    var len = arr2.length;
+	for (var i = 1; i < len; i++) {
+		var tmp = arr2[i];
+        var tmp2 = arr[i];
+		for (var j = i - 1; j >= 0 && (arr2[j] > tmp); j--) {
+			//Shift the number
+			arr2[j + 1] = arr2[j];
+		}
+		arr2[j + 1] = tmp;
+        arr[j + 1] = tmp2;
+	}
+    for(i in arr2){
+        temp += '<tr><td>'+arr[i]+'</td><td>'+arr2[i]+'</td></tr>';
+        
+    }
     document.getElementById('tbody').innerHTML = temp;
 });
