@@ -63,7 +63,7 @@ function payday()
     balance = data.balance;
   let interest = 5;
   if(interestType === "Money Market Deposit")
-    interest = Math.sqrt(balance)/1000;
+    interest = Math.sqrt(balance)/250 + 2;
     interestOutput.innerHTML = interest;
     
     if(data.place === 1) 
