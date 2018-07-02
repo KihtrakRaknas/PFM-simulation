@@ -34,7 +34,6 @@ ref.on("value", snap => {
         arr[j + 1] = tmp2;
         arr3[j + 1] = tmp3;
 	}
-    console.log(arr);
     var temparr = [];
     var temparr2 = [];
     var temparr3 = [];
