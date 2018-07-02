@@ -59,7 +59,7 @@ function start()
     salaryOutput.innerHTML = salary;
     name =  nameInput.value;
     ref.child("name").set(name);
-  t = "";
+  let t = "";
     if(document.getElementById("interest").checked)
       t="Time deposit";
   else
