@@ -31,6 +31,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         balance = parseInt(data.balance);
         salary = parseInt(data.salary);
         name = data.name;
+        interestType = data.interestType;
     });
           init();
       })
