@@ -15,6 +15,9 @@ firebase.auth().onAuthStateChanged(function(user) {
     $('#setUpModal').modal('show');
 });
   }
+  else {
+    setInerval(payday, 10000);
+  }
 });
 
 let data;
@@ -37,18 +40,6 @@ ref.on("value", snap => {
   name = data.name;
 });
 
-if(!salary)
-{
-    salary = Math.floor(Math.random()*90000)+10000;
-    ref.child("salary").set(salary);
-    salaryOutput.innerHTML = salary;
-}
-
-if(!name)
-{
-    name =  "Rishav";
-    ref.child("name").set(name);
-}
 
 function payday()
 {
@@ -60,7 +51,18 @@ function start()
   
   $('#setUpModal').modal('hide');
   setInterval(payday(), 10000);
-  
+    salary = Math.floor(Math.random()*90000)+10000;
+    ref.child("salary").set(salary);
+    salaryOutput.innerHTML = salary;
+    name =  nameInput.value;
+    ref.child("name").set(name);
+  let t = "";
+    if(document.getElementById("interest").checked)
+      t="Time deposit";
+  else
+    t="Money Market Deposit";
+      ref.child("interestType").set(t);
+  document.getElementById().innerHTML = t;
 }
 
 
