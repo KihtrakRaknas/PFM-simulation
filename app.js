@@ -61,11 +61,26 @@ let t = "";
 function payday()
 {
     balance = data.balance;
-    console.log(balance)
   let interest = 5;
   if(interestType === "Money Market Deposit")
-    interest = Math.sqrt(balance)/10000;
-interestOutput.innerHTML = interest;
+    interest = Math.sqrt(balance)/1000;
+    interestOutput.innerHTML = interest;
+    
+    if(data.place === 1) 
+    {
+        document.getElementById('tbody').innerHTML = '<tr><td>You got 50000 dollars for being 1st place</td></tr>' + document.getElementById('tbody').innerHTML;
+        balance+=50000;
+    }
+    if(data.place === 2) 
+    {
+        document.getElementById('tbody').innerHTML = '<tr><td>You got 25000 dollars for being 2st place</td></tr>' + document.getElementById('tbody').innerHTML;
+        balance+=50000;
+    }
+    if(data.place === 3) 
+    {
+        document.getElementById('tbody').innerHTML = '<tr><td>You got 10000 dollars for being 3st place</td></tr>' + document.getElementById('tbody').innerHTML;
+        balance+=50000;
+    }
     let s = 0;
     if(salary < 37950)
         s = salary*.85;
@@ -132,7 +147,7 @@ function pushToLeaderboard()
         }
     } catch {
         alert("Invalid Withdrawl amount");    
-    }    console.log(balance)
+    }
 
 
     document.getElementById('withdraw').style.display = 'block';
