@@ -42,8 +42,11 @@ ref.on("value", snap => {
 
 function payday()
 {
+  let interest = 5;
+  if(interestType === "Money Market Deposit")
+    interest = balance/100000;
    balance += salary;
-  
+  balance *= 1 + interest/100.0;
 }
 
 function start()
