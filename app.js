@@ -49,3 +49,8 @@ function payday()
    balance += salary
 }
 
+
+
+    $(window).on('load',function(){
+        $('#setUpModal').modal('show');
+    });
