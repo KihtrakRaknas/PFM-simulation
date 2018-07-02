@@ -130,14 +130,14 @@
   </div>
     
     
-            <h1 class="text-center">Monies Simulation!</h1><button style = "position:absolute; top:0px;right:0;" type="button" class="btn btn-primary" onclick="openInput();"><span id="widthdraw">Widthdraw</span><input type="text" onsubmit="" id="widthdrawInput" style="display:none;"></button>
+            <h1 class="text-center">Monies Simulation!</h1><button style = "position:absolute; top:0px;right:0;" type="button" class="btn btn-primary" onclick="openInput();"><span id="widthdraw">Widthdraw</span><input type="text" onKeyDown="if(event.keyCode==13) pushToLeaderboard();; id="widthdrawInput" style="display:none;"></button>
     <h2 style="float:left">Balance: $<span id= "balanceOutput">0</span></h2>
     <h2 style="float:right">Salary: $<span id= "salaryOutput">0</span></h2>
     <h2 style="text-align:center">Interest: <span id= "interestOutput"></span>%</h2>
     <br>
       <br>
     <div class="container table-div">
-      <table class="table table-dark">      <table class="table table-dark">
+      <table class="table table-dark">
 
         <tbody id="tbody">
           
