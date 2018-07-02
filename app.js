@@ -52,21 +52,21 @@ function payday()
 function start()
 {
   
-  $('#setUpModal').modal('hide');
-  setInterval(payday, 10000);
+    $('#setUpModal').modal('hide');
+    setInterval(payday, 10000);
     salary = Math.floor(Math.random()*90000)+10000;
     ref.child("salary").set(salary);
     salaryOutput.innerHTML = salary;
     name =  nameInput.value;
     ref.child("name").set(name);
-  t = "";
+    t = "";
     if(document.getElementById("interest").checked)
-      t="Time deposit";
-  else
-    t="Money Market Deposit";
-  interestType = t;
-      ref.child("interestType").set(t);
-  document.getElementById().innerHTML = t;
+        t="Time deposit";
+    else
+        t="Money Market Deposit";
+    interestType = t;
+    ref.child("interestType").set(t);
+    document.getElementById().innerHTML = t;
 }
 
 
