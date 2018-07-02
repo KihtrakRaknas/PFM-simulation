@@ -68,17 +68,17 @@ function payday()
     
     if(data.place === 1) 
     {
-        document.getElementById('tbody').innerHTML = '<tr><td>You got 50000 dollars for being 1st place</td></tr>' + document.getElementById('tbody').innerHTML;
+        document.getElementById('tbody').innerHTML = '<tr><td class="winner">You got 50000 dollars for being 1st place</td></tr>' + document.getElementById('tbody').innerHTML;
         balance+=50000;
     }
     if(data.place === 2) 
     {
-        document.getElementById('tbody').innerHTML = '<tr><td>You got 25000 dollars for being 2st place</td></tr>' + document.getElementById('tbody').innerHTML;
+        document.getElementById('tbody').innerHTML = '<tr><td class="winner">You got 25000 dollars for being 2st place</td></tr>' + document.getElementById('tbody').innerHTML;
         balance+=50000;
     }
     if(data.place === 3) 
     {
-        document.getElementById('tbody').innerHTML = '<tr><td>You got 10000 dollars for being 3st place</td></tr>' + document.getElementById('tbody').innerHTML;
+        document.getElementById('tbody').innerHTML = '<tr><td class="winner">You got 10000 dollars for being 3st place</td></tr>' + document.getElementById('tbody').innerHTML;
         balance+=50000;
     }
     let s = 0;
@@ -88,6 +88,7 @@ function payday()
         s = salary*.75;
     else
         s = salary*.72;
+    document.getElementById('tbody').innerHTML = '<tr><td>You lost '+(salary - s)+' dollars to deductibles</td></tr>' + document.getElementById('tbody').innerHTML;
     let earned = balance*interest/100.0;
     
    balance += s;
@@ -143,7 +144,7 @@ function pushToLeaderboard()
             balanceOutput.innerHTML = balance;
             ref.child('balance').set(balance);
             ref.child("leaderbalance").set(parseInt(data.leaderbalance)+v);
-            document.getElementById('tbody').innerHTML = '<tr><td>You withdrew '+ v + ' dollars</td></tr>' + document.getElementById('tbody').innerHTML;
+            document.getElementById('tbody').innerHTML = '<tr><td class="withdrew">You withdrew '+ v + ' dollars</td></tr>' + document.getElementById('tbody').innerHTML;
         }
     } catch {
         alert("Invalid Withdrawl amount");    
