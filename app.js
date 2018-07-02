@@ -16,7 +16,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 });
   }
   else {
-    setInerval(payday, 10000);
+    setInterval(payday, 10000);
   }
 });
 
@@ -26,7 +26,7 @@ let name;
 
 let balance = 0;
 let balanceOutput = document.getElementById("balanceOutput");
-let salary = parseInt(data.salary);
+let salary = 0;
 let salaryOutput = document.getElementById("salaryOutput");
 
 let nameInput = document.getElementById("nameId");
@@ -34,8 +34,8 @@ let nameInput = document.getElementById("nameId");
 let ref = firebase.database().ref(firebase.auth().uid);
 ref.on("value", snap => {
   data = snap.val();
-  balance = data.balance;
-  salary = data.salary;
+  balance = parseInt(data.balance);
+  salary = parseInt(data.salary);
   name = data.name;
 });
 
