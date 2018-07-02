@@ -13,14 +13,16 @@ firebase.auth().onAuthStateChanged(function(user) {
     $('#setUpModal').modal('show');
   }
   else {
+      console.log(firebase.auth().currentUser.uid);
     ref = firebase.database().ref(firebase.auth().currentUser.uid);
     ref.on("value", snap => {
-      data = snap.val();
-      balance = parseInt(data.balance);
-      salary = parseInt(data.salary);
-      name = data.name;
+        console.log(snap.val());
+        data = snap.val();
+        balance = parseInt(data.balance);
+        salary = parseInt(data.salary);
+        name = data.name;
+        init();
     });
-    init();
   }
 });
 
@@ -36,7 +38,7 @@ let salaryOutput = document.getElementById("salaryOutput");
 let interestType = "";
 
 let nameInput = document.getElementById("nameId");
-
+let t = "";
 
 
 
@@ -55,7 +57,6 @@ function start()
     salary = Math.floor(Math.random()*90000)+10000;
     salaryOutput.innerHTML = salary;
     name =  nameInput.value;
-    let t = "";
     if(document.getElementById("interest").checked)
         t="Time deposit";
     else
