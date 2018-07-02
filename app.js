@@ -54,12 +54,12 @@ let nameInput = document.getElementById("nameId");
 let t = "";
 
 
-
 function payday()
 {
   let interest = 5;
   if(interestType === "Money Market Deposit")
     interest = balance/100000;
+    console.log(interest);
     let s = 0;
     if(salary < 37950)
         s = salary*.85;
@@ -67,8 +67,7 @@ function payday()
         s = salary*.75;
     else
         s = salary*.72;
-    let earned = s;
-    earned += balance*interest/100.0;
+    let earned = balance*interest/100.0;
     
    balance += s;
   balance *= 1 + interest/100.0;
@@ -77,7 +76,8 @@ function payday()
     balanceOutput.innerHTML = balance;
     salaryOutput.innerHTML = salary;
     ref.child('balance').set(balance);
-    document.getElementById('tbody').innerHTML = '<tr><td>You earned '+earned+' dollars</td></tr>' + document.getElementById('tbody').innerHTML;
+    document.getElementById('tbody').innerHTML = '<tr><td>You earned '+s+' dollars from your salary</td></tr>' + document.getElementById('tbody').innerHTML;
+    document.getElementById('tbody').innerHTML = '<tr><td>Your balance increased by '+earned+' due to interest</td></tr>' + document.getElementById('tbody').innerHTML;
 
 }
 
