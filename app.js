@@ -27,12 +27,12 @@ firebase.auth().onAuthStateChanged(function(user) {
     
       ref.once("value", snap => {
           ref.on("value", snap => {
-        data = snap.val();
-        balance = parseInt(data.balance);
-        salary = parseInt(data.salary);
-        name = data.name;
-        interestType = data.interestType;
-    });
+            data = snap.val();
+            balance = parseInt(data.balance);
+            salary = parseInt(data.salary);
+            name = data.name;
+            interestType = data.interestType;
+            });
           init();
       })
       
