@@ -11,9 +11,7 @@ firebase.initializeApp(config);
 firebase.auth().onAuthStateChanged(function(user) {
   if (!user) {
     firebase.auth().signInAnonymously();
-    $(window).on('load',function(){
     $('#setUpModal').modal('show');
-});
   }
   else {
     setInterval(payday, 10000);
@@ -29,6 +27,8 @@ let balanceOutput = document.getElementById("balanceOutput");
 let salary = 0;
 let salaryOutput = document.getElementById("salaryOutput");
 
+let interestType = "";
+
 let nameInput = document.getElementById("nameId");
 
 let ref = firebase.database().ref(firebase.auth().uid);
@@ -42,7 +42,8 @@ ref.on("value", snap => {
 
 function payday()
 {
-   balance += salary
+   balance += salary;
+  
 }
 
 function start()
@@ -55,11 +56,12 @@ function start()
     salaryOutput.innerHTML = salary;
     name =  nameInput.value;
     ref.child("name").set(name);
-  let t = "";
+  t = "";
     if(document.getElementById("interest").checked)
       t="Time deposit";
   else
     t="Money Market Deposit";
+  interestType = t;
       ref.child("interestType").set(t);
   document.getElementById().innerHTML = t;
 }
