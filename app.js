@@ -90,7 +90,7 @@ function payday()
         s = salary*.75;
     else
         s = salary*.72;
-    document.getElementById('tbody').innerHTML = '<tr><td>You lost '+(salary - s)+' dollars to deductibles</td></tr>' + document.getElementById('tbody').innerHTML;
+    document.getElementById('tbody').innerHTML = '<tr><td>You lost '+(salary - s)+' dollars from your salary to deductibles</td></tr>' + document.getElementById('tbody').innerHTML;
     let earned = balance*interest/100.0;
     
    balance += s;
