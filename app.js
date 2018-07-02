@@ -48,6 +48,8 @@ let balanceOutput = document.getElementById("balanceOutput");
 let salary = 0;
 let salaryOutput = document.getElementById("salaryOutput");
 
+let interestOutput = document.getElementById('interestOutput');
+
 let interestType = "";
 
 let nameInput = document.getElementById("nameId");
@@ -59,7 +61,7 @@ function payday()
   let interest = 5;
   if(interestType === "Money Market Deposit")
     interest = balance/100000;
-    console.log(interest);
+interestOutput.innerHTML = interest;
     let s = 0;
     if(salary < 37950)
         s = salary*.85;
