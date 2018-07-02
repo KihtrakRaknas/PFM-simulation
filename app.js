@@ -60,6 +60,7 @@ let t = "";
 
 function payday()
 {
+    balance = data.balance;
     console.log(balance)
   let interest = 5;
   if(interestType === "Money Market Deposit")
