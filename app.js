@@ -64,6 +64,8 @@ function payday()
   let interest = 5;
   if(interestType === "Money Market Deposit")
     interest = Math.sqrt(balance)/250 + 2;
+    if(interest>30)
+        interest = 30;
     interestOutput.innerHTML = interest;
     
     if(data.place === 1) 

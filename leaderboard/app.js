@@ -12,10 +12,10 @@ ref.on("value", snap => {
    let temp = "";
     var arr = [];
     var arr2= [];
+    var arr3 = [];
    for(prop in snap.val()){
        arr.push(snap.val()[prop]["name"]);
        arr2.push(snap.val()[prop]["leaderbalance"]);
-       
    }
     console.log(arr);
     var len = arr2.length;
