@@ -100,7 +100,7 @@ function start()
 
 function init()
 {
-    setInterval(payday, 10);
+    setInterval(payday, 5000);
     
 }
 
