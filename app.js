@@ -11,17 +11,23 @@ firebase.initializeApp(config);
 firebase.auth().onAuthStateChanged(function(user) {
   if (!user) {
     firebase.auth().signInAnonymously();
+    $(window).on('load',function(){
+    $('#setUpModal').modal('show');
+});
   }
 });
 
 let data;
 
-let name = data.name;
+let name;
 
 let balance = 0;
 let balanceOutput = document.getElementById("balanceOutput");
 let salary = parseInt(data.salary);
 let salaryOutput = document.getElementById("salaryOutput");
+
+let nameInput = document.getElementById("nameId");
+let 
 
 let ref = firebase.database().ref(firebase.auth().uid);
 ref.on("value", snap => {
@@ -41,7 +47,7 @@ if(!salary)
 if(!name)
 {
     name =  "Rishav";
-    ref.child("salary").set(salary);
+    ref.child("name").set(name);
 }
 
 function payday()
@@ -49,8 +55,12 @@ function payday()
    balance += salary
 }
 
+function start()
+{
+  
+  $('#setUpModal').modal('hide');
+  setInterval(payday(), 10000);
+  
+}
 
 
-    $(window).on('load',function(){
-        $('#setUpModal').modal('show');
-    });
