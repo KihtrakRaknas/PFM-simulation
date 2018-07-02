@@ -96,8 +96,16 @@
         <!-- Modal body -->
         <div class="modal-body text-align">
           <form action="start();">
-            <input type="text" id="nameId" class="form-control" placeholder="NAME">
+            <input type="text" id="nameId" class="form-control" placeholder="Enter Name Here">
+            
+            <div class="alert alert-danger alert-dismissible" id="incorrectName" style="display:none;">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <strong>Invalid Name</strong> Please enter a better one!
+            </div>
+            
+            
               <h1>Salery will be randomly assigned</h1>
+            
             <label class="switch">
               <input type="checkbox" id="interest">
               <span class="slider"></span>
