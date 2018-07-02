@@ -110,8 +110,8 @@ function is()
 
 function openInput()
 {
-    document.getElementById('withdraw').display = 'none';
-    document.getElementById('withdrawInput').display = 'block';
+    document.getElementById('withdraw').style.display = 'none';
+    document.getElementById('withdrawInput').style.display = 'block';
 }
 
 function pushToLeaderboard()
