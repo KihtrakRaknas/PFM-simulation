@@ -22,6 +22,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   ref.child("salary").set(salary);
     ref.child("name").set(name);
     ref.child("interestType").set(t);
+          ref.child("leaderbalance").set(0);
       }
       
     
@@ -61,7 +62,7 @@ function payday()
 {
   let interest = 5;
   if(interestType === "Money Market Deposit")
-    interest = balance/100000;
+    interest = Math.sqrt(balance)/10000;
 interestOutput.innerHTML = interest;
     let s = 0;
     if(salary < 37950)
@@ -97,6 +98,37 @@ function start()
     interestType = t;
     firebase.auth().signInAnonymously();
     signed = true;
+}
+
+function is()
+{
+    if(document.getElementById("interest").checked)
+        document.getElementById("interestStyle").innerHTML = "Money Market Deposit";
+    else
+        document.getElementById("interestStyle").innerHTML = "Time Deposit";
+}
+
+function openInput()
+{
+    document.getElementById('withdraw').display = 'none';
+    document.getElementById('withdrawInput').display = 'block';
+}
+
+function pushToLeaderboard()
+{
+    try {
+        
+        let v = parseInt(document.getElementById('withdrawInput').value);
+        if(v>balance)
+            alert("Invalid Withdrawl amount");
+        else {
+            balance-=v;
+            ref.child("leaderbalance").set(parseInt(data.leaderbalance)+v);
+        }
+    } catch {
+        alert("Invalid Withdrawl amount");    
+    }
+    
 }
 
 function init()
