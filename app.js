@@ -13,14 +13,21 @@ firebase.auth().onAuthStateChanged(function(user) {
     $('#setUpModal').modal('show');
   }
   else {
-    setInterval(payday, 10000);
+    ref = firebase.database().ref(firebase.auth().currentUser.uid);
+    ref.on("value", snap => {
+      data = snap.val();
+      balance = parseInt(data.balance);
+      salary = parseInt(data.salary);
+      name = data.name;
+    });
+    init();
   }
 });
 
 let data;
 
 let name;
-
+let ref;
 let balance = 0;
 let balanceOutput = document.getElementById("balanceOutput");
 let salary = 0;
@@ -30,13 +37,7 @@ let interestType = "";
 
 let nameInput = document.getElementById("nameId");
 
-let ref = firebase.database().ref(firebase.auth().currentUser.uid);
-ref.on("value", snap => {
-  data = snap.val();
-  balance = parseInt(data.balance);
-  salary = parseInt(data.salary);
-  name = data.name;
-});
+
 
 
 function payday()
