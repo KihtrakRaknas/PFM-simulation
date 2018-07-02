@@ -53,7 +53,7 @@ function start()
 {
   
   $('#setUpModal').modal('hide');
-  setInterval(payday(), 10000);
+  setInterval(payday, 10000);
     salary = Math.floor(Math.random()*90000)+10000;
     ref.child("salary").set(salary);
     salaryOutput.innerHTML = salary;
