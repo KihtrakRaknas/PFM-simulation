@@ -48,9 +48,8 @@ ref.on("value", snap => {
         temparr3.push(arr3[arr.length-1-i]);
     }
     for(i in temparr3){
-        ref.child(temparr3[i]).child("place").set(i+1);
+        ref.child(temparr3[i]).child("place").set(parseInt(i)+1);
     }
-    console.log(arr);
     for(i in arr2){
         temp += '<tr><td>'+temparr2[i]+'</td><td>'+temparr[i]+'</td></tr>';
         
