@@ -60,6 +60,7 @@ let t = "";
 
 function payday()
 {
+    console.log(balance)
   let interest = 5;
   if(interestType === "Money Market Deposit")
     interest = Math.sqrt(balance)/10000;
@@ -123,11 +124,19 @@ function pushToLeaderboard()
             alert("Invalid Withdrawl amount");
         else {
             balance-=v;
+            balanceOutput.innerHTML = balance;
+            ref.child('balance').set(balance);
             ref.child("leaderbalance").set(parseInt(data.leaderbalance)+v);
+            document.getElementById('tbody').innerHTML = '<tr><td>You withdrew '+ v + ' dollars</td></tr>' + document.getElementById('tbody').innerHTML;
         }
     } catch {
         alert("Invalid Withdrawl amount");    
-    }
+    }    console.log(balance)
+
+
+    document.getElementById('withdraw').style.display = 'block';
+    document.getElementById('withdrawInput').style.display = 'none';
+    document.getElementById('withdrawInput').value = '';
     
 }
 
