@@ -13,16 +13,28 @@ firebase.auth().onAuthStateChanged(function(user) {
     $('#setUpModal').modal('show');
   }
   else {
-      console.log(firebase.auth().currentUser.uid);
+      
+      
     ref = firebase.database().ref(firebase.auth().currentUser.uid);
-    ref.on("value", snap => {
-        console.log(snap.val());
+
+      if(signed) {
+          ref.child('balance').set(balance);
+  ref.child("salary").set(salary);
+    ref.child("name").set(name);
+    ref.child("interestType").set(t);
+      }
+      
+    
+      ref.once("value", snap => {
+          ref.on("value", snap => {
         data = snap.val();
         balance = parseInt(data.balance);
         salary = parseInt(data.salary);
         name = data.name;
-        init();
     });
+          init();
+      })
+      
   }
 });
 
@@ -30,6 +42,7 @@ let data;
 
 let name;
 let ref;
+let signed = false;
 let balance = 0;
 let balanceOutput = document.getElementById("balanceOutput");
 let salary = 0;
@@ -47,8 +60,25 @@ function payday()
   let interest = 5;
   if(interestType === "Money Market Deposit")
     interest = balance/100000;
-   balance += salary;
+    let s = 0;
+    if(salary < 37950)
+        s = salary*.85;
+    else if(salary < 91900)
+        s = salary*.75;
+    else
+        s = salary*.72;
+    let earned = s;
+    earned += balance*interest/100.0;
+    
+   balance += s;
   balance *= 1 + interest/100.0;
+    balance = Math.floor(balance*100)/100;
+    earned = Math.floor(earned*100)/100;
+    balanceOutput.innerHTML = balance;
+    salaryOutput.innerHTML = salary;
+    ref.child('balance').set(balance);
+    document.getElementById('tbody').innerHTML = '<tr><td>You earned '+earned+' dollars</td></tr>' + document.getElementById('tbody').innerHTML;
+
 }
 
 function start()
@@ -58,20 +88,18 @@ function start()
     salaryOutput.innerHTML = salary;
     name =  nameInput.value;
     if(document.getElementById("interest").checked)
-        t="Time deposit";
-    else
         t="Money Market Deposit";
+    else
+        t="Time deposit";
     interestType = t;
     firebase.auth().signInAnonymously();
+    signed = true;
 }
 
 function init()
 {
-  
     setInterval(payday, 10000);
-    ref.child("salary").set(salary);
-    ref.child("name").set(name);
-    ref.child("interestType").set(t);
+    
 }
 
 
