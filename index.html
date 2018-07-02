@@ -11,10 +11,13 @@
             background-color:#2e2e2e;
             color:white;
         }
+        .modal{
+            color:black!important;
+        }
       .table-div{
         overflow-x: hidden;
         overflow-y: scroll;
-          height:80vh;
+          height:70vh;
           
       }
       table{
@@ -108,8 +111,9 @@
             
               <h1>Salery will be randomly assigned</h1>
             <br>
+              <h6 style="float:left; display:inline;">Time<h6> <h6 style="float:right;display:inline;">Money Market<h6>
             <label class="switch">
-              <input type="checkbox" id="interest">
+              <input type="checkbox" id="interest" onclick="is();">
               <span class="slider"></span> 
             </label>
               <p class="display-4" id="interestStyle">Market Money Deposit</p>
@@ -126,7 +130,7 @@
   </div>
     
     
-    <h1 class="text-center">Monies Simulation!</h1>
+            <h1 class="text-center">Monies Simulation!</h1><button style = "position:absolute; top:0px;right:0;" type="button" class="btn btn-primary" onclick="openInput();"><span id="widthdraw">Widthdraw</span><input type="text" onsubmit="" id="widthdrawInput" style="display:none;"></button>
     <h2 style="float:left">Balance: $<span id= "balanceOutput">0</span></h2>
     <h2 style="float:right">Salary: $<span id= "salaryOutput">0</span></h2>
     <h2 style="text-align:center">Interest: <span id= "interestOutput"></span>%</h2>

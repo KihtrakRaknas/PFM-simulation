@@ -28,8 +28,16 @@ ref.on("value", snap => {
 		arr2[j + 1] = tmp;
         arr[j + 1] = tmp2;
 	}
+    var temparr = [];
+    var temparr2 = [];
     for(i in arr2){
-        temp += '<tr><td>'+arr[i]+'</td><td>'+arr2[i]+'</td></tr>';
+        temparr.push(arr2[arr2.length-1-i]);
+    }
+    for(i in arr){
+        temparr2.push(arr[arr2.length-1-i]);
+    }
+    for(i in arr2){
+        temp += '<tr><td>'+temparr2[i]+'</td><td>'+temparr[i]+'</td></tr>';
         
     }
     document.getElementById('tbody').innerHTML = temp;
