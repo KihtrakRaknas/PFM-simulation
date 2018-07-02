@@ -22,6 +22,37 @@
     <title>Monies</title>
   </head>
   <body>
+    
+    
+  <div class="modal fade" id="SetUpModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form action="start();">
+            <input type="text" id="nameId" class="form-control" placeholder="NAME">
+              <h1>Salery will be randomly assigned</h1>
+            <button type="button" class="btn btn-primary" onclick="start();">START</button>
+          </form>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+    
+    
     <h1 class="text-center">Monies Simulation!</h1>
     <h2 style="float:left">Balence: $<span = "balenceOutput">$$$</span></h2>
     <h2 style="float:right">Salery: $<span = "saleryOutput">$$$</span></h2>
