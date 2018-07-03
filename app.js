@@ -148,7 +148,7 @@ function pushToLeaderboard()
             ref.child("leaderbalance").set(parseInt(data.leaderbalance)+v);
             document.getElementById('tbody').innerHTML = '<tr><td class="withdrew">You withdrew '+ v + ' dollars</td></tr>' + document.getElementById('tbody').innerHTML;
         }
-    } catch {
+    } catch(err) {
         alert("Invalid Withdrawl amount");    
     }
 
