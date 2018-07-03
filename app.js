@@ -136,7 +136,21 @@ function openInput()
 
 function pushToLeaderboard()
 {
-    try {
+    
+  if(interestType == "Time Deposit")
+    setTimeout(pushLeader, 10000);
+  else
+    pushLeader();
+
+    document.getElementById('withdraw').style.display = 'block';
+    document.getElementById('withdrawInput').style.display = 'none';
+    document.getElementById('withdrawInput').value = '';
+    
+}
+
+function pushLeader()
+{
+ try {
         
         let v = parseInt(document.getElementById('withdrawInput').value);
         if(v>balance)
@@ -150,13 +164,7 @@ function pushToLeaderboard()
         }
     } catch(err) {
         alert("Invalid Withdrawl amount");    
-    }
-
-
-    document.getElementById('withdraw').style.display = 'block';
-    document.getElementById('withdrawInput').style.display = 'none';
-    document.getElementById('withdrawInput').value = '';
-    
+    } 
 }
 
 function init()
